@@ -5,7 +5,6 @@ import InputTxtLogin from './components/InputTxtLogin/InputTxtLogin';
 import Login from './pages/Login/Login';
 
 function App() {
-
   return (
     <>
       <Login/>
