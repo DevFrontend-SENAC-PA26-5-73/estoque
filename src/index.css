@@ -9,16 +9,24 @@
   --cor-8:#007E94;
   --caixa-de-texto:#E7EAF3;
 
-
-
   --tam-1: 30;
   --tam-2: 24;
   --tam-2: 16;
 
+  --background-color: #9ac8d0;
+  --aside-color: #007e94;
+  --text-color: #333;
+  --font-size-small: 1em;
+  --font-size-large: 1.5em;
 }
 
 body{
   font-family: Instrument Sans ;
   background-color: var(--papel-de-parede);
-  
+
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: var(--font-size-small);
+  padding: 0;
+  margin: 0;
 }
