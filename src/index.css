@@ -1,4 +1,18 @@
-:root {
+:root{
+  --cor-1:#005766;
+  --cor-2:#8C95A5;
+  --papel-de-parede:#9AC8D0;
+  --cor-4:#005766;
+  --cor-5:#003842;
+  --cor-6:#00C3E6;
+  --botoes:#00A0BD;
+  --cor-8:#007E94;
+  --caixa-de-texto:#E7EAF3;
+
+  --tam-1: 30;
+  --tam-2: 24;
+  --tam-2: 16;
+
   --background-color: #9ac8d0;
   --aside-color: #007e94;
   --text-color: #333;
@@ -6,7 +20,10 @@
   --font-size-large: 1.5em;
 }
 
-body {
+body{
+  font-family: Instrument Sans ;
+  background-color: var(--papel-de-parede);
+
   background-color: var(--background-color);
   color: var(--text-color);
   font-size: var(--font-size-small);
