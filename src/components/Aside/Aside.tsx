@@ -2,6 +2,7 @@
 import Icon from '../Icon/Icon'
 import { ROTAS_PRINCIPAIS, ROTA_CONFIGURACOES } from '../../routes'
 import './Aside.css'
+import ItemAside from './IntemAside'
 
 interface AsideProps {
   rotaAtual: string // id da página aberta, para destacar o item no menu
@@ -22,15 +23,7 @@ function Aside({ rotaAtual }: AsideProps) {
       {/* Itens principais: o "map" cria um link para cada rota da lista */}
       <nav className="aside-menu">
         {ROTAS_PRINCIPAIS.map((rota) => (
-          <a
-            key={rota.id}
-            href={`#/${rota.id}`}
-            // Adiciona a classe "ativo" no item da página atual
-            className={rota.id === rotaAtual ? 'aside-item ativo' : 'aside-item'}
-          >
-            <Icon nome={rota.icone} />
-            {rota.label}
-          </a>
+          <ItemAside key={rota.id} rota={rota} rotaAtual={rotaAtual} />
         ))}
       </nav>
 
