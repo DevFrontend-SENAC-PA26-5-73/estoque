@@ -1,10 +1,37 @@
 :root{
-  --cord-1: #aba;
-  --cord-2: #bab;
-  --tam-1:  1em;
+  --cor-1:#005766;
+  --cor-2:#8C95A5;
+  --papel-de-parede:#9AC8D0;
+  --cor-4:#005766;
+  --cor-5:#003842;
+  --cor-6:#00C3E6;
+  --botoes:#00A0BD;
+  --cor-8:#007E94;
+  --caixa-de-texto:#E7EAF3;
+
+  --tam-1: 30;
+  --tam-2: 24;
+  --tam-3: 16;
+
+  --largura-aside: 250px; /* largura do menu lateral */
+
+  --background-color: #9ac8d0;
+  --aside-color: #0099b5; /* azul do menu, igual ao protótipo */
+  --text-color: #333;
+  --font-size-small: 1em;
+  --font-size-large: 1.5em;
 }
 
-div{
-  background-color: var(--cord-1);
-  font-size: var(--tam-1);
+*, *::before, *::after { box-sizing: border-box; }
+
+body{
+  /* Instrument Sans é carregada no index.html; se falhar, usa fontes do sistema */
+  font-family: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--papel-de-parede);
+
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: var(--font-size-small);
+  padding: 0;
+  margin: 0;
 }
