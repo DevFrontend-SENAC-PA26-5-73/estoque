@@ -52,5 +52,5 @@ function Aside({ rotaAtual }: AsideProps) {
     </aside>
   )
 }
-
+        
 export default Aside
