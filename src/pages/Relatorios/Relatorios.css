@@ -1,0 +1,56 @@
+.relatorios { display: flex; flex-direction: column; gap: 1.2rem; }
+
+/* Caixa branca grande do protótipo */
+.relatorio-caixa {
+  background: #fff;
+  min-height: 380px;
+  padding: 0.5rem 0.8rem;
+  overflow-x: auto; /* tabela rola na horizontal em telas pequenas */
+}
+
+.relatorio-tabela { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.relatorio-tabela th {
+  text-align: left;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #333; /* linha embaixo de cada título, como no protótipo */
+  white-space: nowrap;
+}
+.relatorio-tabela td { padding: 0.55rem 0.5rem; border-bottom: 1px solid #e6eaf2; }
+.relatorio-tabela .numero { text-align: right; padding-right: 1.5rem; }
+
+/* Etiquetas de tipo de movimentação */
+.tipo { padding: 0.15rem 0.55rem; border-radius: 3px; font-size: 0.75rem; }
+.tipo.entrada { background: #d3f5df; color: #15803d; }
+.tipo.saida { background: #ffc9c9; color: #d92d20; }
+
+/* Botões Imprimir / Exportar */
+.relatorio-acoes {
+  display: flex;
+  gap: 4.5rem;
+  margin-top: 1rem;
+}
+.relatorio-acoes .botao { flex: 0 1 300px; }
+
+.botao {
+  background: var(--botoes);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.botao:hover { background: var(--cor-8); }
+
+@media (max-width: 700px) {
+  .relatorio-acoes { flex-direction: column; gap: 0.8rem; }
+}
+
+/* ---------- Impressão / PDF ---------- */
+@media print {
+  .aside,
+  .topbar,
+  .relatorio-acoes { display: none !important; } /* só o relatório sai no papel */
+  .layout-conteudo { margin-left: 0 !important; }
+  body { background: #fff; }
+}
