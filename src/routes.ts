@@ -26,3 +26,6 @@ export const ROTA_CONFIGURACOES: Rota = {
 }
 
 export const TODAS_AS_ROTAS: Rota[] = [...ROTAS_PRINCIPAIS, ROTA_CONFIGURACOES]
+
+// Rotas públicas: páginas SEM menu lateral e SEM barra do topo (login e cadastro).
+export const ROTAS_PUBLICAS: string[] = ['login', 'cadastro']
