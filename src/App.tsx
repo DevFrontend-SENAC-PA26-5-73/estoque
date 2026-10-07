@@ -1,9 +1,11 @@
-// Componente raiz: monta o layout (menu lateral + topo + página atual).
+// Componente raiz: decide QUAL tela mostrar. Cada tela mora em seu próprio arquivo (pages/).
 import { useState } from 'react'
 import './App.css'
 import Aside from './components/Aside/Aside'
 import Topbar from './components/Topbar/Topbar'
+import Cadastro from './pages/Cadastro/Cadastro'
 import Dashboard from './pages/Dashboard/Dashboard'
+import Login from './pages/Login/Login'
 import Relatorios from './pages/Relatorios/Relatorios'
 import { useRota } from './hooks/useRota'
 import { TODAS_AS_ROTAS } from './routes'
@@ -15,7 +17,11 @@ function App() {
   // Controla se o menu lateral está aberto (botão "hambúrguer" no topo)
   const [menuAberto, setMenuAberto] = useState(() => window.innerWidth > 800) // em celular começa fechado
 
-  // Escolhe qual página renderizar
+  // ---------- Telas públicas: sem menu e sem topo ----------
+  if (rota === 'login') return <Login />
+  if (rota === 'cadastro') return <Cadastro />
+
+  // ---------- Telas internas: com menu lateral + barra do topo ----------
   let pagina
   if (rota === 'dashboard') {
     pagina = <Dashboard />
