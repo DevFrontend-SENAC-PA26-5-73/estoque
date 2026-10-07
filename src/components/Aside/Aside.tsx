@@ -43,14 +43,14 @@ function Aside({ rotaAtual }: AsideProps) {
           <Icon nome={ROTA_CONFIGURACOES.icone} />
           {ROTA_CONFIGURACOES.label}
         </a>
-        {/* TODO: ligar ao logout quando existir autenticação */}
-        <button type="button" className="aside-item">
+        {/* "Sair" volta para a tela de login. TODO: limpar a sessão quando existir autenticação */}
+        <a href="#/login" className="aside-item">
           <Icon nome="logout" />
           Sair
-        </button>
+        </a>
       </nav>
     </aside>
   )
 }
-        
+
 export default Aside
