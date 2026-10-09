@@ -1,0 +1,7 @@
+.botao{
+    background-color: var(--botoes);
+    font-size: var(--tam-4);
+    font-weight:500;
+    padding: 15px;
+    border: none;
+}

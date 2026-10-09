@@ -1,0 +1,19 @@
+.input-txt{
+
+}
+
+.input-txt > label{
+    font-weight: 500;
+}
+.input-txt > input{
+    border: none;
+    padding: 13px 22px ;
+    font-size: var( --tam-4);
+}
+
+.input-txt > input::placeholder {
+  color: var(--cor-4);
+  opacity: 1;
+ 
+}
+
