@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import Relatorios from './pages/Relatorios/Relatorios'
 import { useRota } from './hooks/useRota'
 import { TODAS_AS_ROTAS } from './routes'
+import Produtos from './pages/Produtos/Produtos'
 
 function App() {
   // Qual página está aberta (vem do hash da URL)
@@ -19,8 +20,13 @@ function App() {
   let pagina
   if (rota === 'dashboard') {
     pagina = <Dashboard />
+    
+  } else if (rota === 'produtos') {
+    pagina = <Produtos />
+
   } else if (rota === 'relatorios') {
     pagina = <Relatorios />
+
   } else {
     // As demais telas ainda não foram desenvolvidas: mostra um aviso simples
     const titulo = TODAS_AS_ROTAS.find((r) => r.id === rota)?.label
