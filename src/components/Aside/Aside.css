@@ -1,0 +1,66 @@
+/* Barra lateral fixa à esquerda */
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--largura-aside);
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: var(--aside-color);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.aside-marca {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 1.2rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+.aside-marca strong { display: block; font-size: 1.1rem; }
+.aside-marca span { font-size: 0.85rem; }
+
+.aside-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.2rem 0;
+  flex: 1; /* ocupa o espaço livre e empurra o rodapé para baixo */
+}
+
+.aside-rodape {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Estilo comum de cada item (serve para <a> e <button>) */
+.aside-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1.2rem;
+  color: #fff;
+  text-decoration: none;
+  font: inherit;
+  background: none;
+  border: none;
+  border-left: 4px solid transparent;
+  cursor: pointer;
+  text-align: left;
+}
+.aside-item:hover { background-color: rgba(255, 255, 255, 0.15); }
+
+/* Item da página atual */
+.aside-item.ativo {
+  background-color: rgba(255, 255, 255, 0.22);
+  border-left-color: #fff;
+  font-weight: 600;
+}

@@ -1,0 +1,76 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.topbar-menu,
+.topbar-sino {
+  position: relative;
+  display: flex;
+  background: none;
+  border: none;
+  color: var(--cor-1);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.topbar-busca {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  max-width: 380px;
+  background: var(--caixa-de-texto);
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  color: #666;
+}
+.topbar-busca input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font: inherit;
+}
+
+.topbar-direita {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-left: auto; /* empurra para a direita */
+}
+
+/* Bolinha vermelha de "tem notificação" */
+.topbar-sino-ponto {
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  width: 8px;
+  height: 8px;
+  background: #e5484d;
+  border-radius: 50%;
+}
+
+.topbar-usuario {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+.topbar-usuario strong { display: block; }
+.topbar-usuario span:not(.topbar-avatar) { font-size: 0.75rem; color: #333; }
+
+.topbar-avatar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--cor-5);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}

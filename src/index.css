@@ -12,17 +12,21 @@
   --tam-1: 30;
   --tam-2: 24;
   --tam-3: 16;
-  --tam-4: 15;
+
+  --largura-aside: 250px; /* largura do menu lateral */
 
   --background-color: #9ac8d0;
-  --aside-color: #007e94;
+  --aside-color: #0099b5; /* azul do menu, igual ao protótipo */
   --text-color: #333;
   --font-size-small: 1em;
   --font-size-large: 1.5em;
 }
 
+*, *::before, *::after { box-sizing: border-box; }
+
 body{
-  font-family: "Instrument Sans", sans-serif;
+  /* Instrument Sans é carregada no index.html; se falhar, usa fontes do sistema */
+  font-family: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--papel-de-parede);
   font-optical-sizing: auto;
   font-style: normal;

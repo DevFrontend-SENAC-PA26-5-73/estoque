@@ -1,0 +1,31 @@
+.stat-card {
+  position: relative;
+  background: var(--caixa-de-texto);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.stat-card-menu {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.4rem;
+  background: none;
+  border: none;
+  color: var(--cor-8);
+  cursor: pointer;
+}
+
+.stat-card-topo { display: flex; align-items: center; gap: 0.8rem; }
+.stat-card-icone { color: var(--cor-8); display: flex; }
+.stat-card-titulo { display: block; font-size: 0.75rem; color: #444; }
+.stat-card-valor { font-size: 1.6rem; color: #111; }
+
+.stat-card-variacao {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--cor-8);
+}
+.stat-card-variacao small { color: #444; }

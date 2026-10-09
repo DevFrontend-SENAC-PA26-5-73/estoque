@@ -1,0 +1,5 @@
+.line-chart { width: 100%; height: auto; display: block; }
+.line-chart-grade { stroke: #cfd6e4; stroke-width: 1; }
+.line-chart-texto { font-size: 11px; fill: #444; }
+.line-chart-linha { fill: none; stroke: var(--cor-6); stroke-width: 2; stroke-linejoin: round; }
+.line-chart-ponto { fill: var(--caixa-de-texto); stroke: var(--cor-6); stroke-width: 2; }

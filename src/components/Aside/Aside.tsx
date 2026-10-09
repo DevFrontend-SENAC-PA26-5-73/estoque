@@ -1,16 +1,54 @@
-function Aside() {
+// Menu lateral (sidebar) azul, presente em todas as páginas.
+import Icon from '../Icon/Icon'
+import { ROTAS_PRINCIPAIS, ROTA_CONFIGURACOES } from '../../routes'
+import './Aside.css'
+
+interface AsideProps {
+  rotaAtual: string // id da página aberta, para destacar o item no menu
+}
+
+function Aside({ rotaAtual }: AsideProps) {
   return (
     <aside className="aside">
-      <h1>ERP Estoque</h1>
-      <div className="aside-menu">
-        <a href="/">Início</a>
-        <a href="/produtos">Produtos</a>
-        <a href="/estoque">Estoque</a>
-        <a href="/vendas">Vendas</a>
-        <a href="/financeiro">Financeiro</a>
-        <a href="/relatorios">Relatórios</a>
-        <a href="/usuarios">Usuários</a>
+      {/* Logo + nome do sistema */}
+      <div className="aside-marca">
+        <Icon nome="warehouse" tamanho={34} />
+        <div>
+          <strong>ERP</strong>
+          <span>Gestão de Estoque</span>
+        </div>
       </div>
+
+      {/* Itens principais: o "map" cria um link para cada rota da lista */}
+      <nav className="aside-menu">
+        {ROTAS_PRINCIPAIS.map((rota) => (
+          <a
+            key={rota.id}
+            href={`#/${rota.id}`}
+            // Adiciona a classe "ativo" no item da página atual
+            className={rota.id === rotaAtual ? 'aside-item ativo' : 'aside-item'}
+          >
+            <Icon nome={rota.icone} />
+            {rota.label}
+          </a>
+        ))}
+      </nav>
+
+      {/* Parte de baixo: Configurações e Sair */}
+      <nav className="aside-rodape">
+        <a
+          href={`#/${ROTA_CONFIGURACOES.id}`}
+          className={ROTA_CONFIGURACOES.id === rotaAtual ? 'aside-item ativo' : 'aside-item'}
+        >
+          <Icon nome={ROTA_CONFIGURACOES.icone} />
+          {ROTA_CONFIGURACOES.label}
+        </a>
+        {/* "Sair" volta para a tela de login. TODO: limpar a sessão quando existir autenticação */}
+        <a href="#/login" className="aside-item">
+          <Icon nome="logout" />
+          Sair
+        </a>
+      </nav>
     </aside>
   )
 }
