@@ -1,25 +1,30 @@
+// ItemAside.tsx
 import Icon from '../Icon/Icon'
 import type { IconName } from '../Icon/Icon'
+import './Aside.css';
 
-type IntemAsideProps = {
-    id: string
-    label: string
-    icone: IconName
-    rotaAtual: string
+export type Rota = {
+  id: string
+  label: string
+  icone: IconName
 }
 
-function IntemAside(rota: IntemAsideProps) {
-    return (
-        <a
-            key={rota.id}
-            href={`#/${rota.id}`}
-            // Adiciona a classe "ativo" no item da página atual
-            className={rota.id === rota.rotaAtual ? 'aside-item ativo' : 'aside-item'}
-            >
-            <Icon nome={rota.icone} />
-            {rota.label}
-        </a>
-    )
+type ItemAsideProps = {
+  rota: Rota
+  rotaAtual: string
 }
 
-export default IntemAside;
+function ItemAside({ rota, rotaAtual }: ItemAsideProps) {
+  return (
+    <a
+      href={`#/${rota.id}`}
+      className={rota.id === rotaAtual ? 'aside-item ativo' : 'aside-item'}
+      aria-current={rota.id === rotaAtual ? 'page' : undefined}
+    >
+      <Icon nome={rota.icone} />
+      {rota.label}
+    </a>
+  )
+}
+
+export default ItemAside
