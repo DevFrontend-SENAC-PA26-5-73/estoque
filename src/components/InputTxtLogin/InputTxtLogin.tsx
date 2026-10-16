@@ -4,9 +4,11 @@ type InputTxtLoginProps = {
     label: string,
     placeholder: string,
     type: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url' | 'search' | 'date' | 'time' | 'datetime-local' | 'month' | 'week' | 'color'
+    senha: string;
+    setSenha: (val: string) => void;
 }
 
-function InputTxtLogin({label,placeholder, type}: InputTxtLoginProps) {
+function InputTxtLogin({label,placeholder, type, senha, setSenha}: InputTxtLoginProps) {
     return(
         <div className='input-txt'>
             <label htmlFor="">{label}</label> <br/>
@@ -19,17 +21,6 @@ function InputTxtLogin({label,placeholder, type}: InputTxtLoginProps) {
             />
         </div>
     )
-
-    <label className="auth-campo">
-          Senha
-          <input
-            type="password"
-            placeholder="Digite sua senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            autoComplete="current-password"
-          />
-        </label>
 
 }
 export default InputTxtLogin
