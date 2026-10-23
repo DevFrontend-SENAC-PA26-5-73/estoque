@@ -88,3 +88,16 @@ export const MOVIMENTACOES: Movimentacao[] = [
   { id: 5, produto: 'Headset Gamer',       quantidade: 8,  data: '05/10/2026', observacao: 'Reposição de estoque',    local: 'Depósito B', usuario: 'Maria Silva',     tipo: 'Entrada' },
   { id: 6, produto: 'Cabo HDMI 2m',        quantidade: 15, data: '04/10/2026', observacao: 'Venda online',            local: 'Loja',       usuario: 'Maria Silva',     tipo: 'Saída' },
 ]
+
+// ----- Fornecedores (usados no dropdown da tela de Produtos) -----
+export interface Fornecedor {
+  id: number
+  nome: string
+}
+
+export const FORNECEDORES: Fornecedor[] = [
+  { id: 1, nome: 'Distribuidora Alpha Ltda' },
+  { id: 2, nome: 'Tech Import Comércio' },
+  { id: 3, nome: 'InfoParts Atacado' },
+  { id: 4, nome: 'Gamer Supply Brasil' },
+]

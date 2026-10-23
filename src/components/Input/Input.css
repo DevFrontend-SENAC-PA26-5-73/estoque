@@ -1,0 +1,25 @@
+.input-txt>label {
+    font-weight: 500;
+}
+
+.input-txt>input,
+.input-txt>textarea {
+    border: none;
+    padding: 13px 22px;
+    font-size: var(--tam-4);
+    font-family: inherit;
+    /* o textarea não herda a fonte sozinho */
+    width: 100%;
+    background: var(--caixa-de-texto);
+}
+
+.input-txt>textarea {
+    resize: vertical;
+}
+
+.input-txt>input::placeholder,
+.input-txt>textarea::placeholder {
+    color: var(--cor-4);
+    opacity: 1;
+
+}
