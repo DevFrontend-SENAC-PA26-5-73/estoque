@@ -7,6 +7,7 @@ import Cadastro from './pages/Cadastro/Cadastro'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Login from './pages/Login/Login'
 import Relatorios from './pages/Relatorios/Relatorios'
+import Estoque from './pages/Estoque/Estoque'
 import { useRota } from './hooks/useRota'
 import { ROTAS_CADASTRO, TODAS_AS_ROTAS } from './routes'
 import Produtos from './pages/Produtos/Produtos'
@@ -42,6 +43,9 @@ function App() {
 
   } else if (rota === 'relatorios') {
     pagina = <Relatorios />
+
+  } else if (rota === 'estoque') {
+    pagina = <Estoque />
 
   } else {
     // As demais telas ainda não foram desenvolvidas: mostra um aviso simples
