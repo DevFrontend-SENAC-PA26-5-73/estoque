@@ -29,3 +29,12 @@ export const TODAS_AS_ROTAS: Rota[] = [...ROTAS_PRINCIPAIS, ROTA_CONFIGURACOES]
 
 // Rotas públicas: páginas SEM menu lateral e SEM barra do topo (login e cadastro).
 export const ROTAS_PUBLICAS: string[] = ['login', 'cadastro']
+
+// Rotas internas que NÃO aparecem no menu lateral.
+// São telas abertas por botões de dentro de outras páginas (ex.: a partir de Produtos).
+export const ROTAS_CADASTRO = {
+  produto: 'produtos/cadastro',       // #/produtos/cadastro
+  fornecedor: 'fornecedores/cadastro' // #/fornecedores/cadastro
+} as const
+
+export const ROTAS_INTERNAS: string[] = [...TODAS_AS_ROTAS.map((r) => r.id), ...Object.values(ROTAS_CADASTRO)]
