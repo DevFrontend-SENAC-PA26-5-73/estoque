@@ -1,0 +1,82 @@
+.produtos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Grade do formulário: 3 colunas no desktop, 1 no celular.
+   A descrição ocupa a linha inteira por ser um textarea. */
+.produto-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem 1.2rem;
+}
+
+/* Fornecedor e status ocupam a linha toda */
+.produto-form>.input-txt:has(select) {
+  grid-column: 1 / -1;
+}
+
+/* Espaço entre o <label> e o campo (o <br> sozinho deixa tudo grudado) */
+.produto-form .input-txt > label { display: inline-block; margin-bottom: 0.35rem; }
+
+/* Selects (fornecedor e status) seguem o mesmo visual dos inputs */
+.produto-form .input-txt>select {
+  border: none;
+  padding: 13px 22px;
+  font-size: var(--tam-4);
+  font-family: inherit;
+  width: 100%;
+  background: var(--caixa-de-texto);
+  cursor: pointer;
+}
+
+/* Botões Cadastrar / Salvar como Rascunho */
+.produto-acoes {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.produto-acoes .botao {
+  background: var(--botoes);
+  color: #fff;
+  border: none;
+  padding: 0.85rem 2rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.produto-acoes .botao:hover {
+  background: var(--cor-8);
+}
+
+/* Rascunho: mesmo tamanho, mas com estilo secundário (contorno) */
+.produto-acoes .botao-secundario {
+  background: #fff;
+  color: var(--cor-8);
+  border: 1px solid var(--cor-8);
+}
+
+.produto-acoes .botao-secundario:hover {
+  background: var(--caixa-de-texto);
+}
+
+@media (max-width: 1000px) {
+  .produto-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .produto-form {
+    grid-template-columns: 1fr;
+  }
+
+  .produto-acoes {
+    flex-direction: column;
+  }
+}
