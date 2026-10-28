@@ -17,6 +17,11 @@
   grid-column: 1 / -1;
 }
 
+/* Qualquer campo que precise ocupar as colunas inteiras (ex.: endereço do fornecedor) */
+.produto-form>.campo-linha-inteira {
+  grid-column: 1 / -1;
+}
+
 /* Espaço entre o <label> e o campo (o <br> sozinho deixa tudo grudado) */
 .produto-form .input-txt > label { display: inline-block; margin-bottom: 0.35rem; }
 
@@ -35,39 +40,49 @@
 .produto-acoes {
   grid-column: 1 / -1;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 0.5rem;
 }
 
+/* O visual (cores, hover, variante secundária) vem do componente Botao */
 .produto-acoes .botao {
-  background: var(--botoes);
-  color: #fff;
-  border: none;
   padding: 0.85rem 2rem;
-  font: inherit;
   font-size: 0.9rem;
   font-weight: 500;
-  cursor: pointer;
 }
 
-.produto-acoes .botao:hover {
-  background: var(--cor-8);
+/* ---------- Cabeçalho da tela de Produtos ---------- */
+/* Área dos botões de ação (Cadastrar Produto / Cadastrar Fornecedor) */
+.produtos-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-/* Rascunho: mesmo tamanho, mas com estilo secundário (contorno) */
-.produto-acoes .botao-secundario {
-  background: #fff;
-  color: var(--cor-8);
-  border: 1px solid var(--cor-8);
+.produtos-acoes .botao {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
-.produto-acoes .botao-secundario:hover {
-  background: var(--caixa-de-texto);
+/* Duas tabelas de resumo lado a lado; no celular uma embaixo da outra */
+.produtos-resumos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
+
+
 
 @media (max-width: 1000px) {
   .produto-form {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Em telas médias as duas tabelas de resumo ficam empilhadas */
+  .produtos-resumos {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -78,5 +93,11 @@
 
   .produto-acoes {
     flex-direction: column;
+  }
+
+  /* Botões do cabeçalho ocupam a largura toda, empilhados */
+  .produtos-acoes {
+    flex-direction: column;
+    width: 100%;
   }
 }

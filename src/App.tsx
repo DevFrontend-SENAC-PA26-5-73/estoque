@@ -8,8 +8,10 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import Login from './pages/Login/Login'
 import Relatorios from './pages/Relatorios/Relatorios'
 import { useRota } from './hooks/useRota'
-import { TODAS_AS_ROTAS } from './routes'
+import { ROTAS_CADASTRO, TODAS_AS_ROTAS } from './routes'
 import Produtos from './pages/Produtos/Produtos'
+import CadastroProduto from './pages/Produtos/CadastroProduto'
+import CadastroFornecedor from './pages/Produtos/CadastroFornecedor'
 
 function App() {
   // Qual página está aberta (vem do hash da URL)
@@ -23,10 +25,18 @@ function App() {
   if (rota === 'cadastro') return <Cadastro />
 
   // ---------- Telas internas: com menu lateral + barra do topo ----------
+  // As rotas de cadastro são comparadas PRIMEIRO: "produtos/cadastro" também
+  // começa com "produtos", então essa checagem precisa vir antes da de produtos.
   let pagina
   if (rota === 'dashboard') {
     pagina = <Dashboard />
-    
+
+  } else if (rota === ROTAS_CADASTRO.produto) {
+    pagina = <CadastroProduto />
+
+  } else if (rota === ROTAS_CADASTRO.fornecedor) {
+    pagina = <CadastroFornecedor />
+
   } else if (rota === 'produtos') {
     pagina = <Produtos />
 

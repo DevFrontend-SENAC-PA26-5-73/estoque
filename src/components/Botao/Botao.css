@@ -1,7 +1,31 @@
-.botao{
+.botao {
     background-color: var(--botoes);
+    color: #fff;
     font-size: var(--tam-4);
-    font-weight:500;
+    font-weight: 500;
     padding: 15px;
     border: none;
+    font-family: inherit;
+    /* quando o botão é um <a>, mantém o mesmo alinhamento do <button> */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: var(--cor-8);
+}
+
+/* Variante secundária: mesmo tamanho, mas com contorno (ex.: Salvar como Rascunho) */
+.botao.botao-secundario {
+    background-color: #fff;
+    color: var(--cor-8);
+    border: 1px solid var(--cor-8);
+}
+
+.botao.botao-secundario:hover {
+    background-color: var(--caixa-de-texto);
 }

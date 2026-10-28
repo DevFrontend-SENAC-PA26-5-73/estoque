@@ -89,7 +89,7 @@ export const MOVIMENTACOES: Movimentacao[] = [
   { id: 6, produto: 'Cabo HDMI 2m',        quantidade: 15, data: '04/10/2026', observacao: 'Venda online',            local: 'Loja',       usuario: 'Maria Silva',     tipo: 'Saída' },
 ]
 
-// ----- Fornecedores (usados no dropdown da tela de Produtos) -----
+// ----- Fornecedores (usados no dropdown do cadastro de produtos) -----
 export interface Fornecedor {
   id: number
   nome: string
@@ -100,4 +100,39 @@ export const FORNECEDORES: Fornecedor[] = [
   { id: 2, nome: 'Tech Import Comércio' },
   { id: 3, nome: 'InfoParts Atacado' },
   { id: 4, nome: 'Gamer Supply Brasil' },
+]
+
+// ----- Resumo de fornecedores cadastrados (tela de Produtos) -----
+// O cadastro de fornecedores ainda não tem back-end, então a lista é fixa.
+export interface FornecedorResumo {
+  id: number
+  nome: string
+  cnpj: string
+  contato: string
+  telefone: string
+}
+
+export const FORNECEDORES_RESUMO: FornecedorResumo[] = [
+  { id: 1, nome: 'Distribuidora Alpha Ltda', cnpj: '12.345.678/0001-90', contato: 'Carlos Menezes',  telefone: '(91) 98812-4477' },
+  { id: 2, nome: 'Tech Import Comércio',     cnpj: '23.456.789/0001-01', contato: 'Ana Beatriz',      telefone: '(91) 98220-1133' },
+  { id: 3, nome: 'InfoParts Atacado',        cnpj: '34.567.890/0001-12', contato: 'Rafael Souza',     telefone: '(91) 99654-9080' },
+  { id: 4, nome: 'Gamer Supply Brasil',      cnpj: '45.678.901/0001-23', contato: 'Juliana Prado',    telefone: '(91) 99123-7788' },
+]
+
+// ----- Resumo de produtos cadastrados (tela de Produtos) -----
+export interface ProdutoResumo {
+  id: number
+  nome: string
+  categoria: string
+  fornecedor: string
+  quantidade: number
+  status: 'Ativo' | 'Inativo'
+}
+
+export const PRODUTOS_RESUMO: ProdutoResumo[] = [
+  { id: 1, nome: 'Mouse Logitech',      categoria: 'Periféricos', fornecedor: 'Distribuidora Alpha Ltda', quantidade: 42, status: 'Ativo' },
+  { id: 2, nome: 'Teclado Mecânico',    categoria: 'Periféricos', fornecedor: 'Tech Import Comércio',     quantidade: 18, status: 'Ativo' },
+  { id: 3, nome: 'Monitor 24" Full HD', categoria: 'Monitores',   fornecedor: 'InfoParts Atacado',        quantidade: 7,  status: 'Ativo' },
+  { id: 4, nome: 'Fonte 500W',          categoria: 'Hardware',    fornecedor: 'Gamer Supply Brasil',      quantidade: 0,  status: 'Inativo' },
+  { id: 5, nome: 'Headset Gamer',       categoria: 'Gamer',       fornecedor: 'Gamer Supply Brasil',      quantidade: 25, status: 'Ativo' },
 ]
