@@ -13,6 +13,7 @@ import { ROTAS_CADASTRO, TODAS_AS_ROTAS } from './routes'
 import Produtos from './pages/Produtos/Produtos'
 import CadastroProduto from './pages/Produtos/CadastroProduto'
 import CadastroFornecedor from './pages/Produtos/CadastroFornecedor'
+import Usuarios from './components/Usuarios/Usuarios'
 
 function App() {
   // Qual página está aberta (vem do hash da URL)
@@ -53,7 +54,7 @@ function App() {
     pagina = (
       <>
         <h1>{titulo}</h1>
-        <p>Página em desenvolvimento.</p>
+        <Usuarios />
       </>
     )
   }
