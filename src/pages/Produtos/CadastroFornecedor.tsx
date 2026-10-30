@@ -153,7 +153,7 @@ function CadastroFornecedor() {
           <Botao tipo="submit" texto="Cadastrar" />
           <Botao
             href={`#/${ROTAS_CADASTRO.produto}`}
-            texto="Cadastrar Produto"
+            texto="Cadastrar Fornecedor"
             variante="secundario"
           />
         </div>
