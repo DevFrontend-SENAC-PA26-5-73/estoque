@@ -8,17 +8,11 @@ import Input from '../../components/Input/Input'
 import Botao from '../../components/Botao/Botao'
 import Icon from '../../components/Icon/Icon'
 import { ROTAS_CADASTRO } from '../../routes'
+import CpfCnpjMask from '../../components/CpfCnpjMask/CpfCnpjMask'
 import './Produtos.css'
 
 // ----- Máscara de CNPJ: 00.000.000/0000-00 -----
-function formatarCnpj(valor: string): string {
-  const n = valor.replace(/\D/g, '').slice(0, 14) // só números, no máximo 14
-  return n
-    .replace(/^(\d{2})(\d)/, '$1.$2')
-    .replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3')
-    .replace(/\.(\d{3})(\d)/, '.$1/$2')
-    .replace(/(\d{4})(\d)/, '$1-$2')
-}
+// Será substituído pelo componente CpfCnpjMask quando disponível
 
 // ----- Máscara de telefone: (00) 00000-0000 -----
 function formatarTelefone(valor: string): string {
@@ -104,13 +98,11 @@ function CadastroFornecedor() {
           aoMudar={(valor) => atualizarCampo('nome', valor)}
         />
 
-        <Input
-          label="CNPJ"
-          placeholder="Ex.: 00.000.000/0000-00"
-          nome="cnpj"
-          valor={formulario.cnpj}
-          aoMudar={(valor) => atualizarCampo('cnpj', formatarCnpj(valor))}
-        />
+        <CpfCnpjMask
+  value={formulario.cnpj}
+  onChange={(valor) => atualizarCampo('cnpj', valor)}
+  tipo="cnpj"
+/>
 
         <Input
           label="Pessoa de Contato"

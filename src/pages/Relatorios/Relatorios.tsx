@@ -2,6 +2,7 @@
 // O protótipo lista os campos do relatório (Produto, Quantidade, Data da Movimentação,
 // Observação, Local, Usuário, Tipo de Movimentação). Aqui cada campo vira uma COLUNA da tabela.
 import { MOVIMENTACOES } from '../../data/mock'
+import StatusBadge from '../../components/StatusBadge/StatusBadge'
 import './Relatorios.css'
 
 // Cabeçalhos das colunas, na ordem do protótipo
@@ -50,7 +51,7 @@ function Relatorios() {
                 <td>{m.usuario}</td>
                 <td>
                   {/* A classe muda a cor: "entrada" (verde) ou "saida" (vermelho) */}
-                  <span className={m.tipo === 'Entrada' ? 'tipo entrada' : 'tipo saida'}>{m.tipo}</span>
+                  <StatusBadge tipo={m.tipo} />
                 </td>
               </tr>
             ))}

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { PRODUTOS_RESUMO } from '../../data/mock'
+import StatusBadge from '../../components/StatusBadge/StatusBadge'
 import './Estoque.css'
 
 // Cabeçalhos da tabela de produtos
@@ -115,9 +116,7 @@ function Estoque() {
                 <td>{p.fornecedor}</td>
                 <td className="numero">{p.quantidade}</td>
                 <td>
-                  <span className={p.status === 'Ativo' ? 'tipo entrada' : 'tipo saida'}>
-                    {p.status}
-                  </span>
+                  <StatusBadge tipo={p.status} />
                 </td>
               </tr>
             ))}
