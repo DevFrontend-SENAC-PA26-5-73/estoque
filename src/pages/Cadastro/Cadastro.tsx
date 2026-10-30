@@ -2,15 +2,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import AuthLayout from '../../components/AuthLayout/AuthLayout'
-
-// Coloca a máscara 000.000.000-00 enquanto o usuário digita o CPF
-function formatarCpf(valor: string): string {
-  const n = valor.replace(/\D/g, '').slice(0, 11) // só números, no máximo 11
-  return n
-    .replace(/^(\d{3})(\d)/, '$1.$2')
-    .replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3')
-    .replace(/\.(\d{3})(\d)/, '.$1-$2')
-}
+import CpfCnpjMask from '../../components/CpfCnpjMask/CpfCnpjMask'
 
 // Todos os campos do formulário num único objeto
 interface DadosCadastro {
@@ -68,11 +60,10 @@ function Cadastro() {
 
         <label className="auth-campo">
           CPF
-          <input
-            type="text"
-            inputMode="numeric"
+          <CpfCnpjMask
             value={dados.cpf}
-            onChange={(e) => atualizar('cpf', formatarCpf(e.target.value))}
+            onChange={(valor) => atualizar('cpf', valor)}
+            tipo="cpf"
           />
         </label>
 

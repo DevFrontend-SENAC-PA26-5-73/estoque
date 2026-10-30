@@ -73,8 +73,7 @@ function Produtos() {
       return
     }
 
-    // TODO: substituir por POST para a API
-    console.log('Produto cadastrado:', formulario)
+    // TODO: substituir por POST para a API quando disponível
     window.alert('Produto cadastrado com sucesso!')
     setFormulario(FORMULARIO_VAZIO)
   }
