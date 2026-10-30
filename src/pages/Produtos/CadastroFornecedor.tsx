@@ -92,7 +92,7 @@ function CadastroFornecedor() {
           href="#/produtos"
           texto="Voltar"
           variante="secundario"
-          icone={<Icon nome="arrowRight" tamanho={16} />}
+          icone={<Icon nome="arrowLeft" tamanho={16} />}
         />
       </div>
 
@@ -153,7 +153,7 @@ function CadastroFornecedor() {
           <Botao tipo="submit" texto="Cadastrar" />
           <Botao
             href={`#/${ROTAS_CADASTRO.produto}`}
-            texto="Cadastrar Produto"
+            texto="Cadastrar Fornecedor"
             variante="secundario"
           />
         </div>
