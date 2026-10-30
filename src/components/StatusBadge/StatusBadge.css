@@ -1,0 +1,21 @@
+/* StatusBadge - Componentes de status com cores consistentes */
+
+/* Estilos base para a classe "tipo" */
+.tipo {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Entrada - verde */
+.tipo.entrada {
+  background-color: #d3f5df;
+  color: #15803d;
+}
+
+/* Saída - vermelho */
+.tipo.saída {
+  background-color: #ffc9c9;
+  color: #d92d20;
+}

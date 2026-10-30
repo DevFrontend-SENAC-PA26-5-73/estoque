@@ -126,13 +126,14 @@ export interface ProdutoResumo {
   categoria: string
   fornecedor: string
   quantidade: number
+  preco: number  // em reais (R$)
   status: 'Ativo' | 'Inativo'
 }
 
 export const PRODUTOS_RESUMO: ProdutoResumo[] = [
-  { id: 1, nome: 'Mouse Logitech',      categoria: 'Periféricos', fornecedor: 'Distribuidora Alpha Ltda', quantidade: 42, status: 'Ativo' },
-  { id: 2, nome: 'Teclado Mecânico',    categoria: 'Periféricos', fornecedor: 'Tech Import Comércio',     quantidade: 18, status: 'Ativo' },
-  { id: 3, nome: 'Monitor 24" Full HD', categoria: 'Monitores',   fornecedor: 'InfoParts Atacado',        quantidade: 7,  status: 'Ativo' },
-  { id: 4, nome: 'Fonte 500W',          categoria: 'Hardware',    fornecedor: 'Gamer Supply Brasil',      quantidade: 0,  status: 'Inativo' },
-  { id: 5, nome: 'Headset Gamer',       categoria: 'Gamer',       fornecedor: 'Gamer Supply Brasil',      quantidade: 25, status: 'Ativo' },
+  { id: 1, nome: 'Mouse Logitech',      categoria: 'Periféricos', fornecedor: 'Distribuidora Alpha Ltda', quantidade: 42, preco: 89.90, status: 'Ativo' },
+  { id: 2, nome: 'Teclado Mecânico',    categoria: 'Periféricos', fornecedor: 'Tech Import Comércio',     quantidade: 18, preco: 149.90, status: 'Ativo' },
+  { id: 3, nome: 'Monitor 24" Full HD', categoria: 'Monitores',   fornecedor: 'InfoParts Atacado',        quantidade: 7,  preco: 799.90, status: 'Ativo' },
+  { id: 4, nome: 'Fonte 500W',          categoria: 'Hardware',    fornecedor: 'Gamer Supply Brasil',      quantidade: 0,  preco: 199.90, status: 'Inativo' },
+  { id: 5, nome: 'Headset Gamer',       categoria: 'Gamer',       fornecedor: 'Gamer Supply Brasil',      quantidade: 25, preco: 299.90, status: 'Ativo' },
 ]

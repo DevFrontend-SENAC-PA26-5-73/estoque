@@ -6,6 +6,8 @@
 // console.log por chamadas de fetch.
 import { useState } from 'react'
 import Input from '../../components/Input/Input'
+import Botao from '../../components/Botao/Botao'
+import Icon from '../../components/Icon/Icon'
 import { FORNECEDORES } from '../../data/mock'
 import './Produtos.css'
 
@@ -71,8 +73,7 @@ function Produtos() {
       return
     }
 
-    // TODO: substituir por POST para a API
-    console.log('Produto cadastrado:', formulario)
+    // TODO: substituir por POST para a API quando disponível
     window.alert('Produto cadastrado com sucesso!')
     setFormulario(FORMULARIO_VAZIO)
   }
@@ -91,6 +92,14 @@ function Produtos() {
           <h1>Cadastro de Produtos</h1>
           <p>Acompanhe o gerenciamento do estoque</p>
         </div>
+
+        {/* Volta para a tela de Produtos (resumo dos cadastros) */}
+        <Botao
+          href="#/produtos"
+          texto="Voltar"
+          variante="secundario"
+          icone={<Icon nome="arrowLeft" tamanho={16} />}
+        />
       </div>
 
       <form className="produto-form" onSubmit={cadastrar}>

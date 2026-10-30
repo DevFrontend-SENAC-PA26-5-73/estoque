@@ -1,6 +1,61 @@
 .estoque { display: flex; flex-direction: column; gap: 1.2rem; }
 
-/* Caixa branca grande do protótipo */
+/* --- Seção de filtros acima da tabela --- */
+.estoque-filtros {
+  background: var(--caixa-de-texto);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filtro-grupo {
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.filtro-grupo label {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.filtro-grupo select,
+.filtro-grupo input {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #e6eaf2;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  background: #fff;
+  outline: none;
+  width: 100%;
+}
+
+.filtro-grupo select:focus,
+.filtro-grupo input:focus {
+  border-color: var(--botoes);
+  box-shadow: 0 0 0 2px rgba(0, 150, 136, 0.15);
+}
+
+/* Estilo para o container dos selects (igual ao Dashboard) */
+.filtro-grupo.seletor {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--caixa-de-texto);
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+  color: var(--cor-1);
+}
+
+.filtro-grupo.seletor select {
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
 .estoque-caixa {
   background: #fff;
   min-height: 380px;
