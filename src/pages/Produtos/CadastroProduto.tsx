@@ -99,7 +99,7 @@ function Produtos() {
           href="#/produtos"
           texto="Voltar"
           variante="secundario"
-          icone={<Icon nome="arrowRight" tamanho={16} />}
+          icone={<Icon nome="arrowLeft" tamanho={16} />}
         />
       </div>
 
