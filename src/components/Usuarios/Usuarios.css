@@ -1,0 +1,17 @@
+.tabela{
+    width: 600px;
+    height: 700px;
+    background: white;
+}
+.container {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.lista-usuarios {
+  padding-left: 20px;
+}
+
+.lista-usuarios li {
+  margin-bottom: 6px;
+}
