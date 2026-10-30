@@ -20,11 +20,6 @@ function Relatorios() {
   // O CSS @media print (em Relatorios.css) esconde menu, topo e botões na impressão.
   const imprimir = () => window.print()
 
-  // "Exportar como PDF" usa o mesmo recurso: na janela de impressão,
-  // escolha o destino "Salvar como PDF". Assim não precisa de biblioteca extra.
-  // (Se quiser gerar o PDF direto, dá para usar jsPDF + jspdf-autotable depois.)
-  const exportarPdf = () => window.print()
-
   return (
     <div className="relatorios">
       <div className="pagina-cabecalho">
@@ -66,7 +61,6 @@ function Relatorios() {
       {/* Botões de ação (escondidos na impressão) */}
       <div className="relatorio-acoes">
         <button type="button" className="botao" onClick={imprimir}>Imprimir</button>
-        <button type="button" className="botao" onClick={exportarPdf}>Exportar como PDF</button>
       </div>
     </div>
   )

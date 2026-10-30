@@ -13,6 +13,7 @@ import { ROTAS_CADASTRO, TODAS_AS_ROTAS } from './routes'
 import Produtos from './pages/Produtos/Produtos'
 import CadastroProduto from './pages/Produtos/CadastroProduto'
 import CadastroFornecedor from './pages/Produtos/CadastroFornecedor'
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 
 function App() {
   // Qual página está aberta (vem do hash da URL)
@@ -59,14 +60,22 @@ function App() {
   }
 
   return (
-    <div className={menuAberto ? 'layout' : 'layout layout-menu-fechado'}>
-      {menuAberto && <Aside rotaAtual={rota} />}
+    <ErrorBoundary fallback={
+      <>
+        <h1>Erro ao carregar a página</h1>
+        <p>Ocorreu um erro inesperado. Tente recarregar a página ou navegar até outra tela.</p>
+        <button onClick={() => window.location.reload()}>Tentar novamente</button>
+      </>
+    }>
+      <div className={menuAberto ? 'layout' : 'layout layout-menu-fechado'}>
+        {menuAberto && <Aside rotaAtual={rota} />}
 
-      <div className="layout-conteudo">
-        <Topbar aoAlternarMenu={() => setMenuAberto((aberto) => !aberto)} />
-        <main className="pagina">{pagina}</main>
+        <div className="layout-conteudo">
+          <Topbar aoAlternarMenu={() => setMenuAberto((aberto) => !aberto)} />
+          <main className="pagina">{pagina}</main>
+        </div>
       </div>
-    </div>
+    </ErrorBoundary>
   )
 }
 

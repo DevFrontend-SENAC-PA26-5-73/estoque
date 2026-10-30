@@ -72,8 +72,7 @@ function CadastroFornecedor() {
       return
     }
 
-    // TODO: substituir por POST para a API
-    console.log('Fornecedor cadastrado:', formulario)
+    // TODO: substituir por POST/salvamento local do rascunho quando disponível
     window.alert('Fornecedor cadastrado com sucesso!')
     setFormulario(FORMULARIO_VAZIO)
   }
