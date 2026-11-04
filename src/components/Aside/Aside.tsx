@@ -24,7 +24,11 @@ function Aside({ rotaAtual }: AsideProps) {
         {ROTAS_PRINCIPAIS.map((rota) => (
           <a
             key={rota.id}
-            href={`#/${rota.id}`}
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              window.location.hash = `#/${rota.id}`
+            }}
             // Adiciona a classe "ativo" no item da página atual
             className={rota.id === rotaAtual ? 'aside-item ativo' : 'aside-item'}
           >
@@ -37,14 +41,21 @@ function Aside({ rotaAtual }: AsideProps) {
       {/* Parte de baixo: Configurações e Sair */}
       <nav className="aside-rodape">
         <a
-          href={`#/${ROTA_CONFIGURACOES.id}`}
+          href="#"
+          onClick={(e) => {
+            e.preventDefault()
+            window.location.hash = `#/${ROTA_CONFIGURACOES.id}`
+          }}
           className={ROTA_CONFIGURACOES.id === rotaAtual ? 'aside-item ativo' : 'aside-item'}
         >
           <Icon nome={ROTA_CONFIGURACOES.icone} />
           {ROTA_CONFIGURACOES.label}
         </a>
         {/* "Sair" volta para a tela de login. TODO: limpar a sessão quando existir autenticação */}
-        <a href="#/login" className="aside-item">
+        <a href="#" onClick={(e) => {
+              e.preventDefault()
+              window.location.hash = '#/login'
+            }} className="aside-item">
           <Icon nome="logout" />
           Sair
         </a>

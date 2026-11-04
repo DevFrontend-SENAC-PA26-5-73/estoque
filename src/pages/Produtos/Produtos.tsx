@@ -5,6 +5,7 @@
 import Icon from "../../components/Icon/Icon";
 import Botao from "../../components/Botao/Botao";
 import TabelaResumo from "../../components/TabelaResumo/TabelaResumo";
+import StatusBadge from "../../components/StatusBadge/StatusBadge";
 import type { ColunaResumo } from "../../components/TabelaResumo/TabelaResumo";
 import { FORNECEDORES_RESUMO, PRODUTOS_RESUMO } from "../../data/mock";
 import type { FornecedorResumo, ProdutoResumo } from "../../data/mock";
@@ -21,9 +22,7 @@ const COLUNAS_PRODUTOS: ColunaResumo<ProdutoResumo>[] = [
     chave: 'status',
     titulo: 'Status',
     // Reaproveita as etiquetas de "Entrada"/"Saída" do relatório (verdes/vermelhas)
-    renderizar: (p) => (
-      <span className={p.status === 'Ativo' ? 'tipo entrada' : 'tipo saida'}>{p.status}</span>
-    ),
+    renderizar: (p) => <StatusBadge tipo={p.status} />,
   },
 ]
 
