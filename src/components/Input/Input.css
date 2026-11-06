@@ -1,0 +1,101 @@
+.input-txt>label {
+    font-weight: 500;
+    display: block;
+}
+
+.input-txt>input,
+.input-txt>textarea {
+    border: none;
+    padding: 13px 22px;
+    font-size: var(--tam-4);
+    font-family: inherit;
+    /* o textarea não herda a fonte sozinho */
+    width: 100%;
+    background: var(--caixa-de-texto);
+}
+
+.input-txt>textarea {
+    resize: vertical;
+}
+
+.input-txt>input::placeholder,
+.input-txt>textarea::placeholder {
+    color: var(--cor-4);
+    opacity: 1;
+
+}
+
+/* Variante auth: mesmo visual dos campos das telas de login/cadastro
+   (rótulo pequeno em cima + caixa de texto, como .auth-campo no AuthLayout). */
+.input-txt.input-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0.9rem;
+    font-size: 0.7rem;
+    color: #111;
+}
+
+.input-txt.input-auth>label {
+    font-weight: 400;
+}
+
+.input-txt.input-auth input {
+    font-family: inherit;
+    font-size: 0.8rem;
+    padding: 0.65rem 0.8rem;
+    border: 2px solid transparent;
+    background: var(--caixa-de-texto);
+    color: var(--cor-1);
+    outline: none;
+}
+
+.input-txt.input-auth input::placeholder {
+    color: var(--cor-1);
+    opacity: 0.8;
+}
+
+.input-txt.input-auth input:focus {
+    border-color: var(--botoes);
+}
+
+/* Campo de senha com botão para visualizar (olho) / ocultar. */
+.input-senha-wrapper {
+    position: relative;
+}
+
+.input-senha-wrapper>input {
+    width: 100%;
+    padding: 0.65rem 2.8rem 0.65rem 0.8rem;
+}
+
+.botao-mostrar-senha {
+    position: absolute;
+    right: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.botao-mostrar-senha:hover {
+    opacity: 0.7;
+}
+
+.botao-mostrar-senha:focus {
+    outline: none;
+}
+
+.botao-mostrar-senha:focus-visible {
+    outline: 2px solid var(--botoes);
+    outline-offset: 1px;
+}

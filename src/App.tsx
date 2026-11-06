@@ -1,39 +1,81 @@
 import { useState } from 'react';
 import './App.css'
+import Aside from './components/Aside/Aside'
+import Topbar from './components/Topbar/Topbar'
+import Cadastro from './pages/Cadastro/Cadastro'
+import Dashboard from './pages/Dashboard/Dashboard'
+import Login from './pages/Login/Login'
+import Relatorios from './pages/Relatorios/Relatorios'
+import Estoque from './pages/Estoque/Estoque'
+import { useRota } from './hooks/useRota'
+import { ROTAS_CADASTRO, TODAS_AS_ROTAS } from './routes'
+import Produtos from './pages/Produtos/Produtos'
+import CadastroProduto from './pages/Produtos/CadastroProduto'
+import CadastroFornecedor from './pages/Produtos/CadastroFornecedor'
+import Usuarios from './components/Usuarios/Usuarios'
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 
 function App() {
-  const [contador, setContador] = useState(0);
-  function rederizarMain(){
-    switch(contador){
-      case 1:
-          return <p> Opção 1</p>
-          break;
-      case 2:
-          return <p> Opção 2</p>
-          break;
-      case 3:
-        return <p> Opção 3</p>
-        break;
-      case 4:
-          return <p> Opção 4</p>
-          break;
-      }
-    }
-  return (
-    <>
-      <section>
-        <h1>exemplo de uso do useState</h1>
-        <ul>
-          <button onClick={() => setContador(1)}>Opção 1</button>
-          <button onClick={() => setContador(2)}>Opção 2</button>
-          <button onClick={() => setContador(3)}>Opção 3</button>
-          <button onClick={() => setContador(4)}>Opção 4</button>
-        </ul>
-        <br/>
-        {rederizarMain()}
-      </section>
-    </>
+  // Qual página está aberta (vem do hash da URL)
+  const rota = useRota()
 
+  // Controla se o menu lateral está aberto (botão "hambúrguer" no topo)
+  const [menuAberto, setMenuAberto] = useState(() => window.innerWidth > 800) // em celular começa fechado
+
+  // ---------- Telas públicas: sem menu e sem topo ----------
+  if (rota === 'login') return <Login />
+  if (rota === 'cadastro') return <Cadastro />
+
+  // ---------- Telas internas: com menu lateral + barra do topo ----------
+  // As rotas de cadastro são comparadas PRIMEIRO: "produtos/cadastro" também
+  // começa com "produtos", então essa checagem precisa vir antes da de produtos.
+  let pagina
+  if (rota === 'dashboard') {
+    pagina = <Dashboard />
+
+  } else if (rota === ROTAS_CADASTRO.produto) {
+    pagina = <CadastroProduto />
+
+  } else if (rota === ROTAS_CADASTRO.fornecedor) {
+    pagina = <CadastroFornecedor />
+
+  } else if (rota === 'produtos') {
+    pagina = <Produtos />
+
+  } else if (rota === 'relatorios') {
+    pagina = <Relatorios />
+
+  } else if (rota === 'estoque') {
+    pagina = <Estoque />
+
+  } else {
+    // As demais telas ainda não foram desenvolvidas: mostra um aviso simples
+    const titulo = TODAS_AS_ROTAS.find((r) => r.id === rota)?.label
+    pagina = (
+      <>
+        <h1>{titulo}</h1>
+        <Usuarios />
+      </>
+    )
+  }
+
+  return (
+    <ErrorBoundary fallback={
+      <>
+        <h1>Erro ao carregar a página</h1>
+        <p>Ocorreu um erro inesperado. Tente recarregar a página ou navegar até outra tela.</p>
+        <button onClick={() => window.location.reload()}>Tentar novamente</button>
+      </>
+    }>
+      <div className={menuAberto ? 'layout' : 'layout layout-menu-fechado'}>
+        {menuAberto && <Aside rotaAtual={rota} />}
+
+        <div className="layout-conteudo">
+          <Topbar aoAlternarMenu={() => setMenuAberto((aberto) => !aberto)} />
+          <main className="pagina">{pagina}</main>
+        </div>
+      </div>
+    </ErrorBoundary>
   )
 }
 export default App;

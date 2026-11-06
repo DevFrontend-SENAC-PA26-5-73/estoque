@@ -2,15 +2,10 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import AuthLayout from '../../components/AuthLayout/AuthLayout'
-
-// Coloca a máscara 000.000.000-00 enquanto o usuário digita o CPF
-function formatarCpf(valor: string): string {
-  const n = valor.replace(/\D/g, '').slice(0, 11) // só números, no máximo 11
-  return n
-    .replace(/^(\d{3})(\d)/, '$1.$2')
-    .replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3')
-    .replace(/\.(\d{3})(\d)/, '.$1-$2')
-}
+import Input from '../../components/Input/Input'
+import Botao from '../../components/Botao/Botao'
+import Icon from '../../components/Icon/Icon'
+import CpfCnpjMask from '../../components/CpfCnpjMask/CpfCnpjMask'
 
 // Todos os campos do formulário num único objeto
 interface DadosCadastro {
@@ -20,10 +15,11 @@ interface DadosCadastro {
   email: string
   login: string
   senha: string
+  confirmarSenha: string
 }
 
 const FORMULARIO_VAZIO: DadosCadastro = {
-  nome: '', cpf: '', nascimento: '', email: '', login: '', senha: '',
+  nome: '', cpf: '', nascimento: '', email: '', login: '', senha: '', confirmarSenha: '',
 }
 
 function Cadastro() {
@@ -44,12 +40,17 @@ function Cadastro() {
       setErro('Preencha todos os campos.')
       return
     }
-    if (dados.cpf.length !== 14) {
+    // CPF completo = 11 dígitos (a máscara adiciona pontos/traço automaticamente)
+    if (dados.cpf.replace(/\D/g, '').length !== 11) {
       setErro('CPF incompleto.')
       return
     }
     if (dados.senha.length < 8) {
       setErro('A senha deve ter pelo menos 8 caracteres.')
+      return
+    }
+    if (dados.senha !== dados.confirmarSenha) {
+      setErro('As senhas não coincidem.')
       return
     }
 
@@ -61,44 +62,81 @@ function Cadastro() {
   return (
     <AuthLayout titulo="Cadastro de Usuário">
       <form className="auth-form" onSubmit={aoEnviar}>
-        <label className="auth-campo">
-          Nome
-          <input type="text" value={dados.nome} onChange={(e) => atualizar('nome', e.target.value)} autoComplete="name" />
-        </label>
+        <Input
+          variante="auth"
+          label="Nome"
+          placeholder="Digite seu nome"
+          tipo="text"
+          nome="nome"
+          valor={dados.nome}
+          aoMudar={(valor) => atualizar('nome', valor)}
+          autoComplete="name"
+        />
 
-        <label className="auth-campo">
-          CPF
-          <input
-            type="text"
-            inputMode="numeric"
-            value={dados.cpf}
-            onChange={(e) => atualizar('cpf', formatarCpf(e.target.value))}
-          />
-        </label>
+        <div className="input-txt input-auth">
+          <label htmlFor="cpf">CPF</label>
+          <CpfCnpjMask tipo="cpf" value={dados.cpf} onChange={(valor) => atualizar('cpf', valor)} />
+        </div>
 
-        <label className="auth-campo">
-          Data De Nascimento
-          <input type="date" value={dados.nascimento} onChange={(e) => atualizar('nascimento', e.target.value)} />
-        </label>
+        <Input
+          variante="auth"
+          label="Data De Nascimento"
+          placeholder="Selecione sua data de nascimento"
+          tipo="date"
+          nome="nascimento"
+          valor={dados.nascimento}
+          aoMudar={(valor) => atualizar('nascimento', valor)}
+        />
 
-        <label className="auth-campo">
-          Email
-          <input type="email" value={dados.email} onChange={(e) => atualizar('email', e.target.value)} autoComplete="email" />
-        </label>
+        <Input
+          variante="auth"
+          label="Email"
+          placeholder="Digite seu e-mail"
+          tipo="email"
+          nome="email"
+          valor={dados.email}
+          aoMudar={(valor) => atualizar('email', valor)}
+          autoComplete="email"
+        />
 
-        <label className="auth-campo">
-          Login
-          <input type="text" value={dados.login} onChange={(e) => atualizar('login', e.target.value)} autoComplete="username" />
-        </label>
+        <Input
+          variante="auth"
+          label="Login"
+          placeholder="Crie um login"
+          tipo="text"
+          nome="login"
+          valor={dados.login}
+          aoMudar={(valor) => atualizar('login', valor)}
+          autoComplete="username"
+        />
 
-        <label className="auth-campo">
-          Senha
-          <input type="password" value={dados.senha} onChange={(e) => atualizar('senha', e.target.value)} autoComplete="new-password" />
-        </label>
+        <Input
+          variante="auth"
+          label="Senha"
+          placeholder="Crie uma senha"
+          tipo="password"
+          nome="senha"
+          valor={dados.senha}
+          aoMudar={(valor) => atualizar('senha', valor)}
+          autoComplete="new-password"
+          mostrarOcultarSenha
+        />
+
+        <Input
+          variante="auth"
+          label="Confirmar Senha"
+          placeholder="Digite a senha novamente"
+          tipo="password"
+          nome="confirmarSenha"
+          valor={dados.confirmarSenha}
+          aoMudar={(valor) => atualizar('confirmarSenha', valor)}
+          autoComplete="new-password"
+          mostrarOcultarSenha
+        />
 
         {erro && <p className="auth-erro">{erro}</p>}
 
-        <button type="submit" className="auth-botao">Cadastrar</button>
+        <Botao tipo="submit" variante="auth" texto="Cadastrar" icone={<Icon nome="userPlus" tamanho={16} />} />
 
         <p className="auth-link">
           Já tem conta? <a href="#/login">Entrar</a>

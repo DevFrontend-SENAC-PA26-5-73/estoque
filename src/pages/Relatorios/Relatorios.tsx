@@ -2,6 +2,7 @@
 // O protótipo lista os campos do relatório (Produto, Quantidade, Data da Movimentação,
 // Observação, Local, Usuário, Tipo de Movimentação). Aqui cada campo vira uma COLUNA da tabela.
 import { MOVIMENTACOES } from '../../data/mock'
+import StatusBadge from '../../components/StatusBadge/StatusBadge'
 import './Relatorios.css'
 
 // Cabeçalhos das colunas, na ordem do protótipo
@@ -19,11 +20,6 @@ function Relatorios() {
   // Abre a janela de impressão do navegador.
   // O CSS @media print (em Relatorios.css) esconde menu, topo e botões na impressão.
   const imprimir = () => window.print()
-
-  // "Exportar como PDF" usa o mesmo recurso: na janela de impressão,
-  // escolha o destino "Salvar como PDF". Assim não precisa de biblioteca extra.
-  // (Se quiser gerar o PDF direto, dá para usar jsPDF + jspdf-autotable depois.)
-  const exportarPdf = () => window.print()
 
   return (
     <div className="relatorios">
@@ -55,7 +51,7 @@ function Relatorios() {
                 <td>{m.usuario}</td>
                 <td>
                   {/* A classe muda a cor: "entrada" (verde) ou "saida" (vermelho) */}
-                  <span className={m.tipo === 'Entrada' ? 'tipo entrada' : 'tipo saida'}>{m.tipo}</span>
+                  <StatusBadge tipo={m.tipo} />
                 </td>
               </tr>
             ))}
@@ -66,7 +62,6 @@ function Relatorios() {
       {/* Botões de ação (escondidos na impressão) */}
       <div className="relatorio-acoes">
         <button type="button" className="botao" onClick={imprimir}>Imprimir</button>
-        <button type="button" className="botao" onClick={exportarPdf}>Exportar como PDF</button>
       </div>
     </div>
   )
