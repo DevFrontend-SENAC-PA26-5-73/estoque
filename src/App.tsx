@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import './App.css'
 import Aside from './components/Aside/Aside'
+import Button from './components/Button/Button'
+import SectionHeader from './components/SectionHeader/SectionHeader'
 import Topbar from './components/Topbar/Topbar'
 import Cadastro from './pages/Cadastro/Cadastro'
 import Dashboard from './pages/Dashboard/Dashboard'
@@ -61,6 +63,12 @@ function App() {
   }
 
   return (
+    <>
+      <section className="container">
+          <SectionHeader />
+          <Button />
+      </section>
+    </>
     <ErrorBoundary fallback={
       <>
         <h1>Erro ao carregar a página</h1>
