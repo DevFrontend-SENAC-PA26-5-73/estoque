@@ -2,14 +2,18 @@
 // Foi feito assim para NÃO precisar instalar nenhuma biblioteca nova.
 // Se mais tarde quiser usar o react-router-dom, basta trocar este hook.
 import { useEffect, useState } from 'react'
-import { TODAS_AS_ROTAS } from '../routes'
+import { ROTAS_INTERNAS, ROTAS_PUBLICAS } from '../routes'
 
-const ROTA_PADRAO = 'dashboard'
+// Quando a URL não tem rota (ou é inválida), o sistema abre no login
+const ROTA_PADRAO = 'login'
 
-// Lê o hash atual e devolve o id da rota (ou a rota padrão se for inválido)
+// Lê o hash atual e devolve o id da rota (ou a rota padrão se for inválido).
+// O hash pode vir com ou sem a barra ("#produtos" ou "#/produtos"): normalizamos antes
+// de comparar, senão o href "#/produtos/cadastro" seria lido como um id inválido.
 function lerRotaDaUrl(): string {
-  const id = window.location.hash.replace('#/', '')
-  return TODAS_AS_ROTAS.some((r) => r.id === id) ? id : ROTA_PADRAO
+  const id = window.location.hash.replace(/^#\/?/, '')
+  const existe = ROTAS_PUBLICAS.includes(id) || ROTAS_INTERNAS.includes(id)
+  return existe ? id : ROTA_PADRAO
 }
 
 export function useRota(): string {

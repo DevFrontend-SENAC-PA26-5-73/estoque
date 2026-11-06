@@ -1,0 +1,12 @@
+li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: #fff;
+  border: 1px solid #d5dbe8;
+  padding: 0.45rem 0.6rem;
+}
+li > div { flex: 1; }
+strong { display: block; font-size: 0.85rem; }
+small { font-size: 0.7rem; color: #555; }
+.estoque-baixo-foto { width: 32px; height: 32px; background: #cfd6e4; border-radius: 3px; }

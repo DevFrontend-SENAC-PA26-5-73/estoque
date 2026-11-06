@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import Icon from '../../components/Icon/Icon'
 import StatCard from '../../components/StatCard/StatCard'
+import LowStockCard from '../../components/LowStockCard/LowStockCard'
 import LineChart from '../../components/LineChart/LineChart'
 import { ATIVIDADES, ESTOQUE_BAIXO, INDICADORES, VENDAS_MENSAIS } from '../../data/mock'
 import './Dashboard.css'
@@ -66,14 +67,12 @@ function Dashboard() {
 
           <ul className="estoque-baixo">
             {ESTOQUE_BAIXO.map((p) => (
-              <li key={p.nome}>
-                <span className="estoque-baixo-foto" /> {/* espaço da foto do produto */}
-                <div>
-                  <strong>{p.nome}</strong>
-                  <small>{p.categoria}</small>
-                </div>
-                <span className="etiqueta-qtd">{p.quantidade} un.</span>
-              </li>
+              <LowStockCard
+                key={p.nome}
+                nome={p.nome}
+                categoria={p.categoria}
+                quantidade={p.quantidade}
+              />
             ))}
           </ul>
         </article>

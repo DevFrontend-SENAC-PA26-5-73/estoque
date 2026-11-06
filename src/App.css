@@ -14,7 +14,9 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
+  padding: 1rem;
 }
+
 .pagina h1 { margin: 0; font-size: 1.9rem; color: #111; }
 .pagina-cabecalho p { margin: 0; font-size: 0.85rem; color: #333; }
 
