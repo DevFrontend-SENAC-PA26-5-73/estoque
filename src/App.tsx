@@ -1,9 +1,6 @@
-// Componente raiz: decide QUAL tela mostrar. Cada tela mora em seu próprio arquivo (pages/).
-import { useState } from 'react'
+import { useState } from 'react';
 import './App.css'
 import Aside from './components/Aside/Aside'
-import Button from './components/Button/Button'
-import SectionHeader from './components/SectionHeader/SectionHeader'
 import Topbar from './components/Topbar/Topbar'
 import Cadastro from './pages/Cadastro/Cadastro'
 import Dashboard from './pages/Dashboard/Dashboard'
@@ -63,12 +60,6 @@ function App() {
   }
 
   return (
-    <>
-      <section className="container">
-          <SectionHeader />
-          <Button />
-      </section>
-    </>
     <ErrorBoundary fallback={
       <>
         <h1>Erro ao carregar a página</h1>
@@ -87,5 +78,4 @@ function App() {
     </ErrorBoundary>
   )
 }
-
 export default App;
