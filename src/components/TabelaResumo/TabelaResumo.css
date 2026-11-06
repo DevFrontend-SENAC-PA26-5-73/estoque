@@ -1,0 +1,47 @@
+/* Mesmo visual da tabela de "Atividades recentes" do Dashboard */
+.tabela-resumo .tabela-rolagem {
+  overflow-x: auto;
+}
+
+/* rola na horizontal em telas pequenas */
+.tabela-resumo-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  background: #fff;
+  border: 1px solid #d5dbe8;
+}
+
+.tabela-resumo-tabela th {
+  text-align: left;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid #d5dbe8;
+  white-space: nowrap;
+}
+
+.tabela-resumo-tabela td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid #e6eaf2;
+}
+
+/* Fornecedor (ou qualquer campo mais longo) pode quebrar linha no celular */
+.tabela-resumo-tabela td {
+  min-width: 90px;
+}
+
+.tabela-resumo-tabela .alinhar-direita {
+  text-align: right;
+}
+
+/* Mensagem quando não há registros */
+.tabela-resumo-vazia {
+  margin: 0;
+  padding: 1.5rem 0.8rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+  background: #fff;
+  border: 1px solid #d5dbe8;
+}
