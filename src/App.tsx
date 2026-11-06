@@ -1,5 +1,4 @@
-// Componente raiz: decide QUAL tela mostrar. Cada tela mora em seu próprio arquivo (pages/).
-import { useState } from 'react'
+import { useState } from 'react';
 import './App.css'
 import Aside from './components/Aside/Aside'
 import Topbar from './components/Topbar/Topbar'
@@ -13,6 +12,7 @@ import { ROTAS_CADASTRO, TODAS_AS_ROTAS } from './routes'
 import Produtos from './pages/Produtos/Produtos'
 import CadastroProduto from './pages/Produtos/CadastroProduto'
 import CadastroFornecedor from './pages/Produtos/CadastroFornecedor'
+import Usuarios from './components/Usuarios/Usuarios'
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
     pagina = (
       <>
         <h1>{titulo}</h1>
-        <p>Página em desenvolvimento.</p>
+        <Usuarios />
       </>
     )
   }
@@ -78,5 +78,4 @@ function App() {
     </ErrorBoundary>
   )
 }
-
 export default App;
