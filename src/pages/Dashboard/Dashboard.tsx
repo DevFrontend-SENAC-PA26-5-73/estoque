@@ -4,8 +4,26 @@ import Icon from '../../components/Icon/Icon'
 import StatCard from '../../components/StatCard/StatCard'
 import LowStockCard from '../../components/LowStockCard/LowStockCard'
 import LineChart from '../../components/LineChart/LineChart'
+import TabelaResumo from '../../components/TabelaResumo/TabelaResumo'
+import type { ColunaResumo } from '../../components/TabelaResumo/TabelaResumo'
+import PaginaCabecalho from '../../components/PaginaCabecalho/PaginaCabecalho'
 import { ATIVIDADES, ESTOQUE_BAIXO, INDICADORES, VENDAS_MENSAIS } from '../../data/mock'
+import type { Atividade } from '../../data/mock'
 import './Dashboard.css'
+
+// ---------- Colunas da tabela "Atividades recentes" ----------
+const COLUNAS_ATIVIDADES: ColunaResumo<Atividade>[] = [
+  {
+    chave: 'acao',
+    titulo: 'Ação',
+    renderizar: (a) => (
+      <span className="celula-acao"><Icon nome={a.icone} tamanho={18} /> {a.acao}</span>
+    ),
+  },
+  { chave: 'detalhes', titulo: 'Detalhes', renderizar: (a) => a.detalhes },
+  { chave: 'usuario', titulo: 'Usuários', renderizar: (a) => a.usuario },
+  { chave: 'dataHora', titulo: 'Data/Hora', renderizar: (a) => a.dataHora },
+]
 
 function Dashboard() {
   // Filtros dos selects. Por enquanto só guardam a escolha (dados são fixos);
@@ -16,12 +34,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       {/* ---------- Título + filtro de período ---------- */}
-      <div className="pagina-cabecalho">
-        <div>
-          <h1>Dashboard</h1>
-          <p>Visão geral do sistema</p>
-        </div>
-
+      <PaginaCabecalho titulo="Dashboard" subtitulo="Visão geral do sistema">
         <label className="seletor">
           <Icon nome="calendar" tamanho={16} />
           <select value={periodo} onChange={(e) => setPeriodo(e.target.value)}>
@@ -30,7 +43,7 @@ function Dashboard() {
             <option value="90">Últimos 90 dias</option>
           </select>
         </label>
-      </div>
+      </PaginaCabecalho>
 
       {/* ---------- Cards de indicadores ---------- */}
       <section className="dashboard-indicadores">
@@ -79,39 +92,15 @@ function Dashboard() {
       </section>
 
       {/* ---------- Atividades recentes ---------- */}
-      <section className="painel">
-        <div className="painel-cabecalho">
-          <h2><Icon nome="clock" /> Atividades recentes</h2>
-          <a href="#/relatorios" className="link-ver-mais">
-            Ver todas as atividades <Icon nome="arrowRight" tamanho={14} />
-          </a>
-        </div>
-
-        <div className="tabela-rolagem">
-          <table className="tabela-atividades">
-            <thead>
-              <tr>
-                <th>AÇÃO</th>
-                <th>DETALHES</th>
-                <th>USUÁRIOS</th>
-                <th>DATA/HORA</th>
-              </tr>
-            </thead>
-            <tbody>
-              {ATIVIDADES.map((a) => (
-                <tr key={a.acao + a.dataHora}>
-                  <td>
-                    <span className="celula-acao"><Icon nome={a.icone} tamanho={18} /> {a.acao}</span>
-                  </td>
-                  <td>{a.detalhes}</td>
-                  <td>{a.usuario}</td>
-                  <td>{a.dataHora}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <TabelaResumo
+        titulo="Atividades recentes"
+        icone="clock"
+        link={{ texto: 'Ver todas as atividades', href: '#/relatorios' }}
+        colunas={COLUNAS_ATIVIDADES}
+        dados={ATIVIDADES}
+        mensagemVazia="Nenhuma atividade recente."
+        aoIdentificar={(a) => a.acao + a.dataHora}
+      />
     </div>
   )
 }
