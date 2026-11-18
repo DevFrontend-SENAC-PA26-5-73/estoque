@@ -3,6 +3,7 @@ import Icon from '../Icon/Icon'
 import { ROTAS_PRINCIPAIS, ROTA_CONFIGURACOES } from '../../routes'
 import './Aside.css'
 
+
 interface AsideProps {
   rotaAtual: string // id da página aberta, para destacar o item no menu
 }
