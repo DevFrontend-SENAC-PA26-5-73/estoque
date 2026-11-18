@@ -4,6 +4,7 @@ import { ROTAS_PRINCIPAIS, ROTA_CONFIGURACOES } from '../../routes'
 import './Aside.css'
 //import ItemAside from './IntemAside'
 
+
 interface AsideProps {
   rotaAtual: string // id da página aberta, para destacar o item no menu
 }
