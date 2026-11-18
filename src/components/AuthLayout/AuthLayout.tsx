@@ -11,7 +11,7 @@ interface AuthLayoutProps {
 function AuthLayout({ titulo, children }: AuthLayoutProps) {
   return (
     <div className="auth">
-      <h1 className="auth-marca">KAZAS KASTANHAU</h1>
+      <h1 className="auth-marca">CASAS CASTANHAL</h1>
       <h2 className="auth-titulo">{titulo}</h2>
 
       {children}
