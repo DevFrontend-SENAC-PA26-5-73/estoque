@@ -16,7 +16,7 @@ function AuthLayout({ titulo, children }: AuthLayoutProps) {
 
       {children}
 
-      <footer className="auth-rodape">ERP - SISTEMA V1.0.0</footer>
+      <footer className="auth-rodape">ERP - SISTEMA V1.0.1</footer>
     </div>
   )
 }
